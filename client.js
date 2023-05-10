@@ -11,8 +11,13 @@ const connect = function() {
   conn.setEncoding("utf8");
 
   conn.on(('data'), (data) => console.log(data));
-  return conn;
 
+  conn.on(('connect'), () => {
+    console.log('Successfully connected to game server');
+    conn.write("'Name: ZHQ' to the server, upon connection");
+  });
+
+  return conn;
 
 };
 
